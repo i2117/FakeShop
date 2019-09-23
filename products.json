@@ -1,0 +1,40 @@
+{
+    "products" : [
+        {
+            "name": "Bicycle",
+            "price": 4000
+        },
+        {
+            "name": "Jacket",
+            "price": 5500
+        },
+        {
+            "name": "Cola",
+            "price": 50
+        },
+        {
+            "name": "Phone",
+            "price": 438
+        },
+        {
+            "name": "Pan",
+            "price": 1100
+        },
+        {
+            "name": "Teapot",
+            "price": 800
+        },
+        {
+            "name": "Coffee",
+            "price": 650
+        },
+        {
+            "name": "Ferrari",
+            "price": 7000000
+        },
+        {
+            "name": "Matches",
+            "price": 1
+        }
+    ]
+}
