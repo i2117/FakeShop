@@ -60,7 +60,8 @@ class ProductList extends React.Component {
       return {...el, quantity: 0}
     })
     this.state = {
-      products: products
+      products: products,
+      isCounting: false
     }
   }
 
@@ -72,11 +73,21 @@ class ProductList extends React.Component {
   }
 
   countProductsPrice = () => {
+    const newState = {
+      ...this.state,
+      isCounting: true
+    }
+    this.setState(newState)
     let xhr = new XMLHttpRequest();
     xhr.open('POST', ADDRESS + "countProductsPrice");
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(JSON.stringify(this.state.products));
-    xhr.onload = function() {
+    xhr.onload = () => {
+      const newState = {
+        ...this.state,
+        isCounting: false
+      }
+      this.setState(newState)
       if (xhr.status != 200) {
         alert(`Error ${xhr.status}: ${xhr.statusText}`)
       } else {
@@ -102,15 +113,21 @@ class ProductList extends React.Component {
           class="col">
         </Product>
     })
+
+    const countButton = <button 
+            class="btn btn-primary btn-lg m-5" 
+            onClick={this.countProductsPrice}
+            disabled = {this.state.isCounting}>
+            Посчитать
+          </button>
+
     return (
       <div>
         <div class="row">
-          <button class="btn btn-primary btn-lg m-5" onClick={this.countProductsPrice}>
-            Посчитать
-          </button>
+          {countButton}
         </div>
 
-        <div  class="container row">
+        <div class="container row">
           {productList}
         </div>
 
