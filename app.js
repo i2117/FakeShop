@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 const products = JSON.parse(fs.readFileSync('products.json', 'utf8')).products;
 const currencyUrl = "https://www.cbr-xml-daily.ru/daily_json.js"
 
@@ -67,7 +69,7 @@ app.post('/countProductsPrice', function (req, res) {
   res.send(result);
 }); 
 
-app.listen(3000, function () {
+app.listen(PORT, function () {
   console.log('Example app listening on port 3000!');
 });
 
